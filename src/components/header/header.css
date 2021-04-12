@@ -1,0 +1,9 @@
+.navBar {
+  background-color: rgba(54, 70, 77);
+}
+
+.navBar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
