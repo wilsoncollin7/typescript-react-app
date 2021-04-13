@@ -1,27 +1,32 @@
 import * as React from 'react';
 
 import PostGrid from '../../components/postGrid/postGrid';
-import PostForm from '../../components/postsForm/postForm';
+// import PostForm from '../../components/postsForm/postForm';
 import { Container, Row, Col } from 'react-bootstrap';
 
-// import { useGetPosts } from '../../graphql/posts/queries';
+import { GetPosts } from '../../graphql/posts/queries';
 
 const Home: React.FC = () => {
 
   const [ posts, setPosts ] = React.useState([]);
 
-  // const posts: any = useGetPosts();
+  const init = () => {
+    const posts: any = GetPosts();
+    setPosts(posts);
+  };
 
-  const getData = () => {
-    fetch('/api/posts')
-      .then(response => response.json())
-      .then(data => {
-        setPosts(data);
-      });
-  }
+  // const getData = () => {
+  //   fetch('/api/posts')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       setPosts(data);
+  //     }); 
+  // }
 
   React.useEffect(() => {
-    getData()
+    // getData();
+    init();
   }, []);
 
   return ( 
@@ -29,7 +34,7 @@ const Home: React.FC = () => {
       <Row>
         <Col></Col>
         <Col xs={9}>
-          <PostForm />
+          {/* <PostForm /> */}
         </Col>
         <Col></Col>
       </Row>
