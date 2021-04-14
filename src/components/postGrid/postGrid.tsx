@@ -1,27 +1,38 @@
 import * as React from 'react';
-import { Post } from '../../interfaces/postInterfaces';
-
-// components
-// import PostGridItem from '../postGridItem/postGridItem';
-
+// bootstrap
 import { Container, Row, Col } from 'react-bootstrap';
+// utils
+import { GetPosts } from '../../graphql/posts/queries';
+// components
+import PostGridItem from '../postGridItem/postGridItem';
 
+const PostGrid: React.FC = () => {
 
+  const [ posts, setPosts ] = React.useState<any[]>([]);
 
+  const init = () => {
+    GetPosts().then(res => setPosts(res))
+  };
 
-
-const PostGrid: React.FC<{ posts: Post[] }> = ({ posts }: {posts: Post[] }) => {
+  React.useEffect(() => {
+    init();
+  }, []);
 
   return (
     <Container className="postGridConainer">
       <Row>
         <Col></Col>
         <Col xs="7">
-          {/* {posts.map(post => (
-          <Row key={post.id}>
-            <PostGridItem post={post} />
-          </Row>
-          ))} */}
+          {posts !== undefined ? 
+            posts.map(post => (
+              <Row key={post.id}>
+                <PostGridItem post={post} />
+              </Row>
+            ))
+            :
+            <h1>loading...</h1> 
+          }
+          
         </Col>
         <Col></Col>
       </Row>

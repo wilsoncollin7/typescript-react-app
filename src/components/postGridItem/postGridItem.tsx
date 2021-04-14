@@ -1,9 +1,11 @@
 import * as React from 'react';
 // styling 
 import './postGridItem.css'
+// bootstrap
+import { Container, Row } from 'react-bootstrap';
+// utils
 import { Post } from '../../interfaces/postInterfaces';
 
-import { Container, Row } from 'react-bootstrap';
 
 const PostGridItem: React.FC< { post: Post }> = ({ post }: { post: Post } ) => {
   return (

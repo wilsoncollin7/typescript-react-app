@@ -1,12 +1,12 @@
 import * as React from 'react';
 // styling
 import './postForm.css'
+// bootstrap
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+// utils
 import { useForm } from 'react-hook-form';
 // import { useCreatePost } from '../../graphql/posts/queries';
 import { FormData } from '../../interfaces/postInterfaces';
-
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-
 
 const PostForm: React.FC = () => {
   const { register, handleSubmit } = useForm<FormData>();

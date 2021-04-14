@@ -1,8 +1,7 @@
 // ALL QUERING FUNCTIONS FOR THE POSTS
 // ---------------------------------------------------
-// import { useQuery, useMutation } from "@apollo/client";
-import { useQuery } from '@apollo/client';
-import { client } from '../../utils/apollo-client';
+// import { useMutation } from "@apollo/client";
+import { client } from '../apollo-client/apollo-client';
 // import gql from "graphql-tag";
 // Interfaces
 // import { CreatePostInput, Post } from "../../interfaces/postInterfaces";
@@ -17,8 +16,8 @@ export const GetPosts = () => {
     query: qlList.GET_POSTS
   }).then(res => {
     const data = res.data;
-    console.log(data);
-    // return res;
+    console.log(data.posts);
+    return data.posts;
   },
     error => {
       console.log(error);
